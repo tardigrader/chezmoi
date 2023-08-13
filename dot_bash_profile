@@ -1,0 +1,17 @@
+# .bash_profile
+
+# Get the aliases and functions
+if [ -f ~/.bashrc ]; then
+	. ~/.bashrc
+fi
+
+command_not_found_handle() {
+# don't run if not in a container
+  if [ ! -e /run/.containerenv ] && [ ! -e /.dockerenv ]; then
+    exit 127
+  fi
+
+  distrobox-host-exec "${@}"
+}
+
+# User specific environment and startup programs
