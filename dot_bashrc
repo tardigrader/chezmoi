@@ -102,6 +102,22 @@ then
   source /usr/share/bash-completion/completions/pass
 fi
 
+# Enable completion for chezmoi (if it's installed)
+if [ $(command -v chezmoi) ]
+then
+       if [ -e "${HOME}"/.local/share/bash-completion/chezmoi.bash ]
+       then
+               source "${HOME}"/.local/share/bash-completion/chezmoi.bash
+       # We don't even have the bash-completion directory
+       elif [ ! -d "${HOME}"/.local/share/bash-completion ]
+               then
+                       mkdir "${HOME}"/.local/share/bash-completion
+               # Generate the completion file
+               chezmoi completion bash --output=~/.local/share/bash-completion/chezmoi.bash
+               source "${HOME}"/.local/share/bash-completion/chezmoi.bash
+       fi
+fi
+
 # FZF mappings and options
 [ -f /usr/share/fzf/shell/key-bindings.bash ] && source /usr/share/fzf/shell/key-bindings.bash
 
