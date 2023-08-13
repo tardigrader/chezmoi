@@ -1,0 +1,2 @@
+com.jetbrains.IntelliJ-IDEA-Community
+com.vscodium.codium

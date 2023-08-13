@@ -1,0 +1,6 @@
+net.cozic.joplin_desktop
+org.remmina.Remmina
+org.videolan.VLC
+org.wireshark.Wireshark
+org.zaproxy.ZAP
+rest.insomnia.Insomnia
