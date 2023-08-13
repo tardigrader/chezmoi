@@ -5,16 +5,21 @@ alias i-fdb := install-flatpak-dbtools
 bootstrap:
     ./bootstrap.sh
 
+# Install flatpaks that always should be available
 install-flatpak-default:
     echo 'Installing default flatpaks...'
 
+# Install development tools (IDEs etc)
+install-flatpak-default:
 install-flatpak-devtools:
     echo 'Installing development flatpaks...'
 
+# Install tools for working with databases
 install-flatpak-dbtools:
     echo 'Installing database tools flatpaks...'
     flatpak install < ./flatpak/flatpak-db-tools.txt
 
+# Install programming and terminal fonts
 install-fonts:
     echo 'Installing fonts'
     cd ./fonts && ./install_fonts.sh
