@@ -1,0 +1,80 @@
+# List files with permissions in octal.
+function lsoct(){
+ 	ls -l  "$@" | awk '
+    {
+      k=0;
+      for (i=0;i<=8;i++)
+        k+=((substr($1,i+2,1)~/[rwx]/) *2^(8-i));
+      if (k)
+        printf("%0o ",k);
+      printf(" %9s  %3s %2s %5s  %6s  %s %s %s\n", $3, $6, $7, $8, $5, $9,$10, $11);
+    }'
+}
+
+# Detailed information on an IP address
+# or hostname via http://ipinfo.io
+# Addendum: It might be better to just use the official ipinfo command line
+# client: https://github.com/ipinfo/cli
+# ipinfo() {
+#   if [[ -n $1 ]];
+#     then
+#       if grep -P "(([1-9]\d{0,2})\.){3}(?2)" <<< "$1"; then
+#         curl ipinfo.io/"$1"
+#       else
+#         ipawk=($(host "$1" | awk '/address/ { print $NF }'))
+# 	    curl ipinfo.io/${ipawk[1]}
+#     fi
+#   else
+#     curl ipinfo.io
+#   fi
+#   echo
+# }
+
+# Find vendor of MAC address
+oui() 
+{
+    grep -i "$1" /usr/share/hwdata/oui.txt;
+}
+
+# Get GeoIP from ipinfo
+#
+geoip() {
+  curl "ipinfo.io/$1"
+  echo
+}
+
+# Use Shodan's InternetDB to get a quick glance of open ports
+#
+idbports() {
+  curl -s "https://internetdb.shodan.io/$1" | jq "."
+  echo
+}
+
+# Lookup hash of file against CIRCLs database of known file hashes
+hashl() { 
+  URL="https://hashlookup.circl.lu/lookup/md5"
+  HASH=$(md5sum -z $1 | cut -d " " -f1)
+  if command hashlookup &> /dev/null;
+    then
+      hashlookup --query $HASH; 
+    else
+      curl -s -X GET "$URL"/"$HASH" \
+              -H "accept: application/json" \
+              | python -m json.tool
+  fi
+
+# Decode Microsoft Safelinks
+}
+function safelinks() {
+    echo
+    local stripped_url=$(echo -ne $(echo -n "$1" \
+    | sed -E "s/%/\\\\x/g") \
+    | sed "s/^http.*url=//";)
+    local url_only=$(echo $stripped_url | grep -oP "^http.*?&" | sed "s/&//")
+    local query_string=$(echo $stripped_url | grep -oP "&.*$")
+    local domain=$(echo $url_only | grep -oP '[^\./]*\.[^\./]*(:|/)'  | sed -e 's/\(:.*\/\|\/\)//g')
+    echo "Normalized (url decoded) URL: $stripped_url"
+    echo "URL: $url_only"
+    echo "Domain: $domain"
+    echo "Querystring: $query_string"
+}
