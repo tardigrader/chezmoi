@@ -15,7 +15,7 @@ FONTS_ARR=( \
   )
 
 # Are we inside a container?
-if [ -f /var/run/.containerenv ]
+if [ -e /run/.containerenv ]
 then
   CONTAINER_ENV=1
 fi
