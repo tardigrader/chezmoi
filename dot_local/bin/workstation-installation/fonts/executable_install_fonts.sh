@@ -1,18 +1,18 @@
 #!/bin/bash
 #
+set -euo pipefail
+
 FONTS_DIR="${HOME}/.local/share/fonts"
-# TODO: It would be clearer if this was an associative array with the 
-# font name as a key.
-FONTS_ARR=( \
-  "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/EnvyCodeR.zip" \
-  "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FiraCode.zip" \
-  "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FiraMono.zip" \
-  "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/IosevkaTerm.zip" \
-  "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Iosevka.zip" \
-  "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Monofur.zip" \
-  "https://github.com/IBM/plex/releases/download/v6.3.0/TrueType.zip" \
-  "https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Inconsolata.zip" \
-  )
+declare -A FONTS_ARR=( \
+  [EnvyCodeR]="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/EnvyCodeR.zip" \
+  [FiraCode]="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FiraCode.zip" \
+  [FiraMono]="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/FiraMono.zip" \
+  [IosevkaTerm]="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/IosevkaTerm.zip" \
+  [Iosevka]="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Iosevka.zip" \
+  [Monofur]="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Monofur.zip" \
+  [IBMPlex]="https://github.com/IBM/plex/releases/download/v6.3.0/TrueType.zip" \
+  [Inconsolata]="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/Inconsolata.zip" \
+)
 
 # Are we inside a container?
 if [ -e /run/.containerenv ]
@@ -32,23 +32,27 @@ fi
 # Download fonts
 # TODO: Fonts should probably not be downloaded _again_ if they already
 # exist in the directory.
-for font in "${FONTS_ARR[@]}"
+for font in "${!FONTS_ARR[@]}"
 do
   echo "Downloading font => ${font}"
-  curl --silent --fail --location --show-error "${font}" --remote-name
+  curl --silent --fail --location --show-error "${FONTS_ARR[$font]}" --remote-name
 done
 
 # ...and unzip info $FONTS_DIR
+
+echo "Installing fonts in ${FONTS_DIR}"
 unzip -o -q -d "${FONTS_DIR}" "*.zip"
 
 # Update font cache
-if [ -z "${CONTAINER_ENV}" ]
+if [ -n "${CONTAINER_ENV}" ]
 then
   echo "We are in a container. Trying distrobox-host-exec to update font cache."
-  distrobox-host-exec fc-cache || echo "Font cache not updated. Try fc-cache manually."
+  distrobox-host-exec fc-cache && echo "Font cache updated." \
+    || echo "Font cache not updated. Try fc-cache manually."
 else
-  echo "fc-cache -f"
+  echo "Updating font cache..."
+  fc-cache -f
 fi
 
-# TODO: Remove downloaded zips
-rm -iv *.zip
+# Clean up
+rm ./*.zip
