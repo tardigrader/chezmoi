@@ -1,4 +1,6 @@
+com.github.tchx84.Flatseal
 net.cozic.joplin_desktop
+org.keepassxc.KeePassXC
 org.remmina.Remmina
 org.videolan.VLC
 org.wireshark.Wireshark

@@ -1,2 +1,4 @@
 com.jetbrains.IntelliJ-IDEA-Community
+com.jetbrains.PyCharm-Community
 com.vscodium.codium
+net.werwolv.ImHex
