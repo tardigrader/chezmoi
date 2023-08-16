@@ -1,6 +1,7 @@
-alias i-fd := install-flatpak-default
-alias i-fdd := install-flatpak-devtools
-alias i-fdb := install-flatpak-dbtools
+alias i-fd    := install-flatpak-default
+alias i-fdd   := install-flatpak-devtools
+alias i-fdb   := install-flatpak-dbtools
+alias i-fonts := install-fonts
 
 bootstrap:
     ./bootstrap.sh
@@ -10,7 +11,6 @@ install-flatpak-default:
     echo 'Installing default flatpaks...'
 
 # Install development tools (IDEs etc)
-install-flatpak-default:
 install-flatpak-devtools:
     echo 'Installing development flatpaks...'
 
@@ -21,6 +21,5 @@ install-flatpak-dbtools:
 
 # Install programming and terminal fonts
 install-fonts:
-    echo 'Installing fonts'
-    cd ./fonts && ./install_fonts.sh
+    @cd ./fonts && ./install_fonts.sh
 
