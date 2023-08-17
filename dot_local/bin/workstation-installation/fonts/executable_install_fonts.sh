@@ -2,6 +2,7 @@
 #
 set -euo pipefail
 
+CONTAINER_ENV=
 FONTS_DIR="${HOME}/.local/share/fonts"
 declare -A FONTS_ARR=( \
   [EnvyCodeR]="https://github.com/ryanoasis/nerd-fonts/releases/download/v3.0.2/EnvyCodeR.zip" \
