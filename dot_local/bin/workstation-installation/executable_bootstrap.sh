@@ -8,7 +8,6 @@
 if [ $(command -v distrobox) ]
 then
   echo Distrobox already installed.
-  exit 0
 else
   echo Installing distrobox...
   curl -s https://raw.githubusercontent.com/89luca89/distrobox/main/install | sh -s -- --prefix ~/.local
@@ -20,7 +19,6 @@ fi
 if [ $(command -v just) ]
 then
   echo Just already installed.
-  exit 0
 else
   echo Installing just...
   if [ ! -d "${HOME}"/bin ]
