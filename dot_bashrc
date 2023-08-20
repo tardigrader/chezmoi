@@ -75,10 +75,14 @@ HISTCONTROL=ignoreboth
 shopt -s histappend
 
 # For setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=10000
+export HISTSIZE=100000
+export HISTFILESIZE=100000
 
 # Timestamp history
 HISTTIMEFORMAT="%F %T "
+
+# Do not append any of these commands to history file
+export HISTIGNORE="pwd:ls:ls -l:ls -a:ls -la:history:pass"
 
 # Check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
