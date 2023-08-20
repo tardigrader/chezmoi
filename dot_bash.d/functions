@@ -78,3 +78,23 @@ function safelinks() {
     echo "Domain: $domain"
     echo "Querystring: $query_string"
 }
+# Change into directory using fzf, include hidden directories
+cdf() {
+  local dir
+  dir=$(find ${1:-.} -type d 2> /dev/null | fzf +m) && cd "$dir"
+}
+
+# cdh - cd to selected parent directory using fzf
+cdh() {
+  local declare dirs=()
+  get_parent_dirs() {
+    if [[ -d "${1}" ]]; then dirs+=("$1"); else return; fi
+    if [[ "${1}" == '/' ]]; then
+      for _dir in "${dirs[@]}"; do echo $_dir; done
+    else
+      get_parent_dirs $(dirname "$1")
+    fi
+  }
+  local DIR=$(get_parent_dirs $(realpath "${1:-$PWD}") | fzf-tmux --tac)
+  cd "$DIR"
+}
