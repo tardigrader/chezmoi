@@ -98,7 +98,7 @@ then
 fi
 
 # Enable completion for chezmoi (if it's installed)
-if [ $(command -v chezmoi) ]
+if [ "$(command -v chezmoi)" ]
 then
   if [ -e "${HOME}"/.local/share/bash-completion/chezmoi.bash ]
   then
@@ -145,3 +145,9 @@ fi
 
 # Created by `pipx` on 2023-08-21 12:36:35
 export PATH="$PATH:/var/home/krister/.local/bin"
+
+# Starship prompt
+if [ "$(command -v starship)" ]
+then
+  eval "$(starship init bash)"
+fi
