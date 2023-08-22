@@ -23,3 +23,8 @@ install-flatpak-dbtools:
 install-fonts:
     @cd ./fonts && ./install_fonts.sh
 
+# Install starship prompt
+install-starship:
+    ./install_starship.sh
+
+
