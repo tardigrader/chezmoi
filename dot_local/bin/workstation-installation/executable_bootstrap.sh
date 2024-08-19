@@ -21,9 +21,5 @@ then
   echo Just already installed.
 else
   echo Installing just...
-  if [ ! -d "${HOME}"/bin ]
-  then
-    mkdir "${HOME}"/bin
-  fi
-  curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | bash -s -- --to "${HOME}/bin"
+  curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | bash -s -- --to "${HOME}/.local/bin"
 fi
