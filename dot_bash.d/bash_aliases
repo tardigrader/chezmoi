@@ -2,8 +2,8 @@
 ### Custom aliases ###
 
 # Source localized aliases if available
-if [ -x ~/.bash.d/bash_aliases.this ]; then
-    source ~/.bash.d/bash_aliases.this
+if [ -x $HOME/.bash.d/bash_aliases.this ]; then
+    source $HOME/.bash.d/bash_aliases.this
 fi
 
 ### Files, filesystems and directories ### {{{
@@ -73,10 +73,20 @@ then
 fi
 # }}}
 
+if [[ $(command -v nvim) ]]
+then
+    alias vim='nvim'
+fi
+
+alias wezterm='flatpak run org.wezfurlong.wezterm'
+
+alias govc='podman run --env-file="$HOME/.govcenv" --rm -it vmware/govc /govc'
+alias pwsh='podman run --mount 'type=volume,src=powershell_scripts,dst=/home' -it powershell:latest'
+
 # Security {{{
 alias firechrome='firejail --name=firechrome --private google-chrome --no-first-run'
 alias cyberchef='podman run -d -p 8000:8000 cyberchef:latest'
-alias remnux='podman run --rm -it -v /home/krister/IRT:/home/remnux/IRT:z -u remnux docker.io/remnux/remnux-distro:focal bash'
-alias pwsh='podman run --mount 'type=volume,src=powershell_scripts,dst=/home' -it powershell:latest'
+alias remnux='podman run -u remnux -it docker.io/remnux/remnux-distro bash'
 alias safecurl='podman run --rm --cap-drop=all -it curlimages/curl /bin/sh'
+alias pclip='pass --clip'
 # }}}
