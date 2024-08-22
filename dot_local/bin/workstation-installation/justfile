@@ -9,10 +9,12 @@ bootstrap:
 # Install flatpaks that always should be available
 install-flatpak-default:
     echo 'Installing default flatpaks...'
+    flatpak install < ./flatpak/flatpak-default.txt
 
 # Install development tools (IDEs etc)
 install-flatpak-devtools:
     echo 'Installing development flatpaks...'
+    flatpak install < ./flatpak/flatpak-dev-tools.txt
 
 # Install tools for working with databases
 install-flatpak-dbtools:
