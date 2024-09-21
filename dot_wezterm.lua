@@ -72,6 +72,10 @@ config.launch_menu = {
     label = 'distrobox python',
     args = { 'bash', '-c', 'distrobox enter python' },
   },
+  {
+    label = 'yazi',
+    args = { 'bash', '-c', 'distrobox enter fedora40 --additional-flags "--env EDITOR=/usr/bin/nvim" -e yazi' },
+  },
 }
 
 -- and finally, return the configuration to wezterm
