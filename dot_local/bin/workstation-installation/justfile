@@ -1,7 +1,11 @@
-alias i-fd    := install-flatpak-default
-alias i-fdd   := install-flatpak-devtools
-alias i-fdb   := install-flatpak-dbtools
-alias i-fonts := install-fonts
+alias i-fd          := install-flatpak-default
+alias i-fdd         := install-flatpak-devtools
+alias i-fdb         := install-flatpak-dbtools
+alias i-fonts       := install-fonts
+alias update-yazi   := install-yazi
+
+default:
+    just --list
 
 bootstrap:
     ./bootstrap.sh
