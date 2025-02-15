@@ -29,4 +29,8 @@ install-fonts:
 install-starship:
     ./install_starship.sh
 
+# Install yazi file manager
+install-yazi:
+    ./install_yazi.sh
+
 
