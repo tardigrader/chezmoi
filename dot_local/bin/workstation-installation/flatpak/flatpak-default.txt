@@ -11,4 +11,4 @@ org.videolan.VLC
 org.wezfurlong.wezterm
 org.wireshark.Wireshark
 org.zaproxy.ZAP
-rest.insomnia.Insomnia
+com.usebruno.Bruno
