@@ -108,6 +108,13 @@ if [ -e "$HOME"/.bash.d/wezterm-completion.sh ];
 then
   source "$HOME"/.bash.d/wezterm-completion.sh
 fi
+#
+# Enable completion for yazi
+if [ -e "$HOME"/.local/share/yazi/completions ];
+then
+  source "$HOME"/.local/share/yazi/completions/yazi.bash
+  source "$HOME"/.local/share/yazi/completions/ya.bash
+fi
 
 # Enable completion for chezmoi (if it's installed)
 if [ "$(command -v chezmoi)" ]
