@@ -1,14 +1,7 @@
-alias i-fd          := install-flatpak-default
-alias i-fdd         := install-flatpak-devtools
-alias i-fdb         := install-flatpak-dbtools
-alias i-fonts       := install-fonts
-alias update-yazi   := install-yazi
 
+# Lists all recipes
 default:
     just --list
-
-bootstrap:
-    ./bootstrap.sh
 
 # Install flatpaks that always should be available
 install-flatpak-default:
@@ -37,4 +30,7 @@ install-starship:
 install-yazi:
     ./install_yazi.sh
 
+# Install powershell
+install-powershell:
+    ./install_pwsh.sh
 
