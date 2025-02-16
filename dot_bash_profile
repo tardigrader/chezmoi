@@ -1,4 +1,6 @@
 # .bash_profile
+#
+export PATH="$PATH:/var/home/krister/.local/bin"
 
 # Get the aliases and functions
 if [ -f ~/.bashrc ]; then
@@ -16,5 +18,3 @@ command_not_found_handle() {
 
 # User specific environment and startup programs
 
-# Created by `pipx` on 2023-08-21 12:36:35
-export PATH="$PATH:/var/home/krister/.local/bin"
