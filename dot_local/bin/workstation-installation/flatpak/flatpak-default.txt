@@ -7,7 +7,7 @@ io.typora.Typora
 net.cozic.joplin_desktop
 net.werwolv.ImHex
 org.flameshot.Flameshot
-org.gnome.Ptyxis
+app.devsuite.Ptyxis
 org.keepassxc.KeePassXC
 org.remmina.Remmina
 org.videolan.VLC
