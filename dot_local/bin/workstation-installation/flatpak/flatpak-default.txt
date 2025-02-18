@@ -1,14 +1,16 @@
 com.github.tchx84.Flatseal
 com.jgraph.drawio.desktop
+com.usebruno.Bruno
 io.github.flattool.Warehouse
+io.github.getnf.embellish
 io.typora.Typora
 net.cozic.joplin_desktop
 net.werwolv.ImHex
 org.flameshot.Flameshot
+org.gnome.Ptyxis
 org.keepassxc.KeePassXC
 org.remmina.Remmina
 org.videolan.VLC
 org.wezfurlong.wezterm
 org.wireshark.Wireshark
 org.zaproxy.ZAP
-com.usebruno.Bruno

@@ -1,4 +1,6 @@
+org.freedesktop.Bustle
+org.gnome.dspy
 com.jetbrains.IntelliJ-IDEA-Community
 com.jetbrains.PyCharm-Community
-com.vscodium.codium
+com.visualstudio.code
 net.werwolv.ImHex
