@@ -170,3 +170,4 @@ if [ "$(command -v starship)" ]
 then
   eval "$(starship init bash)"
 fi
+export PATH=/home/krister/.krew/bin:/usr/local/bin:/usr/bin:/bin:/usr/local/sbin:/usr/sbin:/sbin:/var/home/krister/.local/bin
