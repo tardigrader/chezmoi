@@ -1,2 +1,8 @@
+browse-pvc
 ctx
+df-pv
+pod-dive
+resource-capacity
 stern
+view-allocations
+view-secret
