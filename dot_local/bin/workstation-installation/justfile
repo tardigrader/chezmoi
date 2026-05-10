@@ -34,3 +34,6 @@ install-yazi:
 install-powershell:
     ./install_pwsh.sh
 
+# Install kubernetes tooling
+install-k8s-tools:
+    ./install_k8s_tools.sh
