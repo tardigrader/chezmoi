@@ -21,7 +21,7 @@ $kotlin\
 $haskell\
 $python\
 [](fg:green bg:sapphire)\
-$conda\
+$jobs\
 [](fg:sapphire bg:teal)\
 $kubernetes\
 [](fg:teal bg:mauve)\
@@ -292,11 +292,17 @@ description = "The activated distrobox"
 command = "echo $(. /var/run/.containerenv; echo ${name} distrobox)"
 when = """ [[ -f /run/.containerenv && -f /run/.toolboxenv ]] """
 style = "bg:mauve fg:crust"
-format = "[$output]($style)"
+format = "[ $output]($style)"
 disabled = false
 
 [kubernetes]
 disabled = false
 symbol = "⎈ "
 style = "fg:crust bg:teal"
-format = '[$symbol]($style)[$context]($style)'
+format = '[$symbol]($style)[$context ]($style)'
+
+[jobs]
+symbol = '+ '
+number_threshold = 1
+style = "fg:crust bg:sapphire"
+format = '[$symbol$number]($style)[$context ]($style)'
