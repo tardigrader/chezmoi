@@ -27,7 +27,7 @@ ${custom.distrobox}\
 [ ](fg:lavender)\
 $cmd_duration\
 $line_break\
-\n
+\n\
 $character"""
 
 palette = 'catppuccin_mocha'
