@@ -22,9 +22,11 @@ $haskell\
 $python\
 [](fg:green bg:sapphire)\
 $conda\
-[](fg:sapphire bg:lavender)\
+[](fg:sapphire bg:teal)\
+$kubernetes\
+[](fg:teal bg:mauve)\
 ${custom.distrobox}\
-[ ](fg:lavender)\
+[ ](fg:mauve)\
 $cmd_duration\
 $line_break\
 \n\
@@ -289,7 +291,12 @@ crust = "#181926"
 description = "The activated distrobox"
 command = "echo $(. /var/run/.containerenv; echo ${name} distrobox)"
 when = """ [[ -f /run/.containerenv && -f /run/.toolboxenv ]] """
-style = "bg:lavender fg:crust"
+style = "bg:mauve fg:crust"
 format = "[$output]($style)"
 disabled = false
 
+[kubernetes]
+disabled = false
+symbol = "⎈ "
+style = "fg:crust bg:teal"
+format = '[$symbol]($style)[$context]($style)'
