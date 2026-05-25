@@ -1,0 +1,2 @@
+"\C-a\C-l": "\C-e | less"
+"\C-a\C-k": "\C-e -o yaml | less"
