@@ -1,0 +1,30 @@
+_default:
+  @just --list
+
+image-versions:
+  #!/bin/sh
+  for c in $(ls *.ini)
+    do
+      echo -ne "Distrobox $c using "
+      grep image $c | awk -F '=' '{ print "\t" $2 }'
+  done
+
+# Create fedora distrobox
+assemble-fedora:
+  distrobox assemble create --file ./fedora-distrobox.ini
+
+# Create java distrobox (based on Fedora toolbox)
+assemble-java:
+  distrobox assemble create --file ./java-distrobox.ini
+
+# Create python distrobox (based on Fedora toolbox)
+assemble-python:
+  distrobox assemble create --file ./python-distrobox.ini
+
+# Create go distrobox (based on Fedora toolbox)
+assemble-go:
+  distrobox assemble create --file ./go-distrobox.ini
+
+# Create a universal dev distrobox (from Microsoft) https://mcr.microsoft.com/en-us/artifact/mar/devcontainers/universal/about
+assemble-universal:
+  distrobox create --image mcr.microsoft.com/devcontainers/universal:latest -n dev-universal -Y
