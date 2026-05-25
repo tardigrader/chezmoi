@@ -37,3 +37,13 @@ install-powershell:
 # Install kubernetes tooling
 install-k8s-tools:
     ./install_k8s_tools.sh
+
+# Install/upgrade just
+upgrade-just:
+    #!/bin/sh
+    if [ $(command -v just) ]
+    then
+        rm "${HOME}"/.local/bin/just
+    fi
+    echo Upgrading just...
+    curl --proto '=https' --tlsv1.2 -sSf https://just.systems/install.sh | bash -s -- --to "${HOME}/.local/bin"
