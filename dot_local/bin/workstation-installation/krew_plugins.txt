@@ -1,8 +1,11 @@
 browse-pvc
 ctx
+cyclonus
 df-pv
+node-shell
 pod-dive
 resource-capacity
 stern
+tree
 view-allocations
 view-secret
